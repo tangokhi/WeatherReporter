@@ -32,7 +32,7 @@ The UI can be improved.
 
 If the application doesn't retrieve data make sure following html request is returning data
 
-"http://api.openweathermap.org/data/2.5/forecast?APPID=39c35f311c64c8b265d5a23d5d9b6d5b&units=metric&q=london,uk"
+"http://api.openweathermap.org/data/2.5/forecast/daily?APPID=39c35f311c64c8b265d5a23d5d9b6d5b&units=metric&cnt=5&q=london,uk"
 
 Few the values such as external service address and token are hardcoded which can be moved to a more appropriate location such as config file. 
 
