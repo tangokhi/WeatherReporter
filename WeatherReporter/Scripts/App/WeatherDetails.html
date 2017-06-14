@@ -1,0 +1,63 @@
+﻿<div class="row">
+    <div>
+        <form novalidate class="simple-form">
+            <span class="form-group">
+                <label><input type="text" ng-model="$ctrl.cityCountry" placeholder="City,Country" /> Example: London,UK</label><br />
+                <input type="submit" ng-click="$ctrl.getWeatherData()" value="Retrieve" class="btn btn-success" />
+            </span>
+        </form>
+    </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li ng-repeat="item in $ctrl.weatherParameters.list" ng-class="{active:$first}">
+        <a href="#{{$index}}" data-toggle="tab">
+            <div>
+                {{$ctrl.readDate(item.dt) | date : 'MMMM d'}}
+            </div>
+            <div>
+                {{item.temp.day | number:0}}&#176;c
+            </div>
+            <div>
+                <p>
+                    <img ng-src="{{$ctrl.getIconUrl(item.weather[0].icon)}}" />
+                    {{item.weather[0].main}}
+                </p>
+            </div>
+            
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content clearfix">
+    <div ng-repeat="item in $ctrl.weatherParameters.list" ng-class="{active:$first}" id="{{$index}}" class="tab-pane">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Temp</td>
+                    <td>{{item.temp.day | number:0}}&#176;c</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Min</td>
+                    <td>{{item.temp.min | number:0}}&#176;c</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td>{{item.temp.max | number:0}}&#176;c</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Weather</td>
+                    <td>{{item.weather[0].description}}</td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="alert alert-danger" ng-show="$ctrl.errorMessage">{{$ctrl.errorMessage}}</div>
